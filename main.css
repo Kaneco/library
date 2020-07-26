@@ -1,0 +1,56 @@
+body {
+  background: #e2e1e0;
+}
+
+#wrapper {
+  margin: auto;
+  display: grid;
+  background: #fff;
+  border-radius: 4px;
+  margin-top: 3em;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  grid-template-rows: 25% 1fr 10%;
+  grid-template-columns: 1fr;
+  width: 800px;
+  height: 600px;
+}
+
+#title {
+  text-align: center;
+  background-color: #f2f8f9;
+  grid-row: 1;
+}
+
+#booklist {
+  grid-row: 2;
+}
+
+#bookremove {
+  grid-row: 3;
+  margin: auto;
+}
+
+h1 {
+  color: #666666;
+  font-family: "Raleway", sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+p {
+  color: #666666;
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+#title-subtext {
+    margin-top: -30px;
+}
+
+#addBookBtn {
+    margin-top: -40px;
+}

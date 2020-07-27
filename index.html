@@ -18,7 +18,51 @@
             </div>
             <div id="booklist"></div>
             <div id="bookremove">
-                <a id="addBookBtn" class="btn-floating btn-large waves-effect waves-light red pulse"><i class="material-icons">add</i></a>
+                <button data-target="add-book-popup" id="add-book-button" class="btn-floating btn-large waves-effect waves-light red pulse modal-trigger"><i class="material-icons">add</i></a>
+            </div>
+        </div>
+        <!-- Modal Structure -->
+        <div id="add-book-popup" class="modal1">
+            <!-- Modal content -->
+            <div class="modal-content1">
+                <span class="close">&times;</span>
+              <div class="row">
+                <form action="#" class="col s12">
+                  <div class="row">
+                      <div class="input-field inline">
+                        <input id="book-title" type="text" class="validate" required>
+                        <label for="book-title">Title</label>
+                      </div>
+                      <div class="input-field inline">
+                        <input id="book-author" type="text" class="validate" required>
+                        <label for="book-author">Author</label>
+                      </div>
+                      <div class="input-field inline">
+                        <input id="book-pages" type="number" class="validate" required>
+                        <label for="book-pages">Number of Pages</label>
+                      </div>
+                      <p class="col s6">
+                        <label>
+                          <input class="with-gap" name="read-status" type="radio" value="read" checked />
+                          <span>Read</span>
+                        </label>
+                      </p>
+                      <p class="col s6"> 
+                        <label>
+                          <input class="with-gap" name="read-status"  value="notread" type="radio"/>
+                          <span>Not Read</span>
+                        </label>
+                      </p>
+                      <div id="submit-button">
+                        <button class="btn waves-effect waves-light red center-align" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                      </div>
+                  </div>
+                </form>
+              </div>
+              
+                    
             </div>
         </div>
         <script src="main.js" async defer></script>

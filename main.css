@@ -2,6 +2,7 @@ body {
   background: #e2e1e0;
 }
 
+/* GRID LAYOUT */
 #wrapper {
   margin: auto;
   display: grid;
@@ -11,7 +12,7 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   grid-template-rows: 25% 1fr 10%;
   grid-template-columns: 1fr;
-  width: 800px;
+  width: 600px;
   height: 600px;
 }
 
@@ -30,6 +31,7 @@ body {
   margin: auto;
 }
 
+/* Text Formatting */
 h1 {
   color: #666666;
   font-family: "Raleway", sans-serif;
@@ -48,9 +50,66 @@ p {
 }
 
 #title-subtext {
-    margin-top: -30px;
+  margin-top: -30px;
 }
 
-#addBookBtn {
-    margin-top: -40px;
+/* Add button Positioning */
+#add-book-button {
+  margin-top: -40px;
+}
+
+/* MODAL BOX / FORM Layout */
+/* The Modal (background) */
+.modal1 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+}
+/* Modal Content/Box */
+.modal-content1 {
+  background-color: #fefefe;
+  margin: 10% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px; /* Could be more or less, depending on screen size */
+}
+/* Modal Form Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  margin-top: -25px;
+  margin-right: -10px;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.row{
+    margin-bottom: 0px;
+}
+/* Remove Number Arrows from Number Input form in Modal Box*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+/* Form Submit Buttom */
+#submit-button {
+    text-align:center;
 }

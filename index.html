@@ -16,7 +16,43 @@
                 <h1>Library Project</h1>
                 <p id="title-subtext">Using HTML, CSS, Javascript, Firebase</p>
             </div>
-            <div id="booklist"></div>
+            <!-- Book List Table -->
+            <div id="booklist">
+                <table class="highlight"> 
+                    <thead>
+                      <tr>
+                          <th>Title</th>
+                          <th>Author</th>
+                          <th>Pages</th>
+                          <th>Read</th>
+                      </tr>
+                    </thead>
+            <!-- Book Array to be updated here -->
+                    <tbody id="book-list-table" >
+                        <!-- Book Array to be updated here -->
+                      <tr>
+                        <td>Alvin</td>
+                        <td>Eclair</td>
+                        <td>$0.87</td>
+                        <td>  
+                            <!-- Switch -->
+                            <div id="readCheckbox" class="switch">
+                              <label>
+                                <input type="checkbox" class="filled-in" checked="checked" />
+                                <span></span>
+                              </label>
+                            </div>
+                        </td>  
+                        <td>  
+                            <button class="btn-floating btn-small waves-effect waves-light red" type="submit" name="action">
+                                <i class="material-icons right">delete</i>
+                              </button>
+                        </td>
+
+                    
+                    </tbody>
+                  </table>
+            </div>
             <div id="bookremove">
                 <button data-target="add-book-popup" id="add-book-button" class="btn-floating btn-large waves-effect waves-light red pulse modal-trigger"><i class="material-icons">add</i></a>
             </div>

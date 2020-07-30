@@ -13,7 +13,7 @@ body {
   grid-template-rows: 25% 1fr 10%;
   grid-template-columns: 1fr;
   width: 600px;
-  height: 600px;
+  margin-bottom: 3em;
 }
 
 #title {
@@ -74,7 +74,7 @@ p {
 
 /* Add button Positioning */
 #add-book-button {
-  margin-top: -40px;
+  margin-top: 0px;
 }
 
 /* MODAL BOX / FORM Layout */

@@ -29,27 +29,7 @@
                     </thead>
             <!-- Book Array to be updated here -->
                     <tbody id="book-list-table" >
-                        <!-- Book Array to be updated here -->
-                      <tr>
-                        <td>Alvin</td>
-                        <td>Eclair</td>
-                        <td>$0.87</td>
-                        <td>  
-                            <!-- Switch -->
-                            <div id="readCheckbox" class="switch">
-                              <label>
-                                <input type="checkbox" class="filled-in" checked="checked" />
-                                <span></span>
-                              </label>
-                            </div>
-                        </td>  
-                        <td>  
-                            <button class="btn-floating btn-small waves-effect waves-light red" type="submit" name="action">
-                                <i class="material-icons right">delete</i>
-                              </button>
-                        </td>
-
-                    
+                        <!-- Book Array to be updated here -->      
                     </tbody>
                   </table>
             </div>
@@ -63,7 +43,7 @@
             <div class="modal-content1">
                 <span class="close">&times;</span>
               <div class="row">
-                <form action="#" class="col s12">
+                <form action="#" id="add-book-form" class="col s12">
                   <div class="row">
                       <div class="input-field inline">
                         <input id="book-title" type="text" class="validate" required>
@@ -79,13 +59,13 @@
                       </div>
                       <p class="col s6">
                         <label>
-                          <input class="with-gap" name="read-status" type="radio" value="read" checked />
+                          <input class="with-gap" name="read-status" type="radio" value="true" checked />
                           <span>Read</span>
                         </label>
                       </p>
                       <p class="col s6"> 
                         <label>
-                          <input class="with-gap" name="read-status"  value="notread" type="radio"/>
+                          <input class="with-gap" name="read-status"  value="false" type="radio"/>
                           <span>Not Read</span>
                         </label>
                       </p>

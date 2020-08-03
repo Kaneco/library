@@ -28,9 +28,12 @@ body {
   padding-right: 15px;
 }
 
+/* Add button Positioning */
 #bookremove {
   grid-row: 3;
   margin: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 /* Text Formatting */
@@ -70,11 +73,6 @@ p {
 
 #title-subtext {
   margin-top: -30px;
-}
-
-/* Add button Positioning */
-#add-book-button {
-  margin-top: 0px;
 }
 
 /* MODAL BOX / FORM Layout */

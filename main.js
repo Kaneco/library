@@ -2,10 +2,51 @@ let myLibrary = [];
 let bookTable = document.getElementById("book-list-table"); // Get a reference to the table
 let addBookForm = document.getElementById("add-book-form"); // Get the add book form in the modal box
 let deleteBookButton = bookTable.getElementsByTagName("button");
-
+let readCheckboxes = bookTable.getElementsByTagName("input");
 /* Need a LIVE collection of buttons,  since they are dynamically 
 updated depending on the number of books and because queryselectorall() 
 returns a static collection */
+let firebaseRef = firebase.database().ref("books/");
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+	apiKey: "AIzaSyCJuSaj4JaZOmIyY2RU3sQGDVlWV_Wc_B4",
+	authDomain: "library-1280f.firebaseapp.com",
+	databaseURL: "https://library-1280f.firebaseio.com",
+	projectId: "library-1280f",
+	storageBucket: "library-1280f.appspot.com",
+	messagingSenderId: "168784972966",
+	appId: "1:168784972966:web:38287c8d1f52033b3db867",
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+// Get a reference to the database service
+let database = firebase.database();
+
+function saveToDB(book) {
+	firebaseRef.push({
+		title: book.title,
+		author: book.author,
+		pages: book.pages,
+		read: book.read,
+	});
+}
+
+function getFromDB() {
+	myLibrary = []; // clears original stored array to get all books again
+	let booksRef = firebase.database().ref("books/");
+	let i = 0;
+	booksRef.on("value", function (data) {
+		data.val().forEach((book) => {
+			console.log(book.title, book.author, book.pages, book.read);
+			let addedBook = new Book(book.title, book.author, book.pages, book.read); // Creates new book from Form inputs, adds to library and renders to page
+			myLibrary.push(addedBook);
+			i++;
+			//let indexBook = firebase.database().ref("books/" + i);
+			//console.log(firebase.database().ref("books/0").on());
+		});
+	});
+}
 
 function Book(title, author, pages, read) {
 	//Book object Constructor
@@ -15,31 +56,30 @@ function Book(title, author, pages, read) {
 	this.read = read;
 }
 
-//book Tests
-const book1Test = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
-const book2Test = new Book("LORT!2", "J.R.R. Tolkien2", 295, true);
-const book3Test = new Book("The Hobbit3", "J.R.R. Tolkien2", 111, false);
-addBookToLibrary(book1Test);
-addBookToLibrary(book2Test);
-addBookToLibrary(book3Test);
-render();
-
 Book.prototype.toggleReadStatus = function () {
 	//Toggles read status on a book
-	if (this.read) {
+	if (this.read == true || this.read == "true") {
 		this.read = false;
 	} else {
 		this.read = true;
 	}
 };
 
+//function toggleReadSta
+
 function addBookToLibrary(book) {
 	//add book to the Library list
-	return myLibrary.push(book);
+	myLibrary.push(book);
+	//add book to Firebase Library
+	saveToDB(book);
 }
 
 function removeBookFromLibrary(index) {
 	myLibrary.splice(index, 1); // Removes book at index and renders the list again with book removed
+	firebase
+		.database()
+		.ref("books/" + index)
+		.remove();
 	render();
 }
 
@@ -64,11 +104,11 @@ function addRow(book, index) {
 	let readCell = newRow.insertCell(-1);
 	let deleteCell = newRow.insertCell(-1);
 	let readStatus = book.read; //store readStatus property for checkbox
-	let readHTML = `<td><div class="switch"><label><input type="checkbox" id="book${index}-checkbox" class="filled-in" checked="checked"/><span></span> </label> </div></td>`;
-	let notReadHTML = `<td><div class="switch"><label><input type="checkbox" id="book${index}-checkbox" class="filled-in"/><span></span> </label> </div></td>`;
+	let readHTML = `<td><div class="switch"><label><input data-index=${index} type="checkbox" id="book${index}-checkbox" class="filled-in" checked="checked"/><span></span> </label> </div></td>`;
+	let notReadHTML = `<td><div class="switch"><label><input data-index=${index} type="checkbox" id="book${index}-checkbox" class="filled-in"/><span></span> </label> </div></td>`;
 	// readCell.innerHTML = `<td><div class="switch"><label><input type="checkbox" id="book${index}-checkbox" class="filled-in"/><span></span> </label> </div></td>`;
 	deleteCell.innerHTML = `<td><button data-index=${index} class="btn-floating btn-small waves-effect waves-light red" type="button"><i class="material-icons right">delete</i></button></td>`;
-	if (readStatus == true || readStatus == "true" ) {
+	if (readStatus == true || readStatus == "true") {
 		// Change Checkbox depending on book read status
 		//document.getElementById(`book${index}-checkbox`).setAttribute("checked", "checked");
 		//document.getElementById(`book${index}-checkbox`).checked = true;
@@ -95,6 +135,13 @@ function render() {
 			removeBookFromLibrary(bookIndex);
 		});
 	}
+	for (let checkbox of readCheckboxes) {
+		// adds a event listener for each checkbox of the booklist and get the book index of that book
+		checkbox.addEventListener("click", (e) => {
+			let bookIndex = e.target.dataset.index;
+			myLibrary[bookIndex].toggleReadStatus();
+		});
+	}
 }
 
 addBookForm.addEventListener("submit", function (event) {
@@ -103,7 +150,8 @@ addBookForm.addEventListener("submit", function (event) {
 	let bookTitle = document.getElementById("book-title").value;
 	let bookAuthor = document.getElementById("book-author").value;
 	let bookPages = document.getElementById("book-pages").value;
-	let bookRead = document.querySelector('input[name="read-status"]:checked').value;
+	let bookRead = document.querySelector('input[name="read-status"]:checked')
+		.value;
 	addBookForm.reset(); // Reset Form Inputs and close modal after submitting
 	modal.style.display = "none";
 	let addedBook = new Book(bookTitle, bookAuthor, bookPages, bookRead); // Creates new book from Form inputs, adds to library and renders to page
@@ -132,3 +180,6 @@ window.onclick = function (event) {
 		modal.style.display = "none";
 	}
 };
+
+getFromDB();
+render();

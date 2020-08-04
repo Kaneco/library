@@ -10,7 +10,7 @@ body {
   border-radius: 4px;
   margin-top: 3em;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  grid-template-rows: 25% 1fr 10%;
+  grid-template-rows: 150px 1fr 100px;
   grid-template-columns: 1fr;
   width: 600px;
   margin-bottom: 3em;

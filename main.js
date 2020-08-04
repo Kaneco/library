@@ -106,8 +106,8 @@ function getFromDB() {
 	});
 	console.log("getfromDB");
 	console.table(myLibrary);
+	return myLibrary;
 }
-
 
 function addRow(book, firebaseID) {
 	// Insert a row at the end of the table
@@ -164,7 +164,8 @@ function render() {
 		// adds a event listener for each checkbox of the booklist and get the book index of that book
 		checkbox.addEventListener("click", (e) => {
 			getFromDB();
-			var bookIndex = myLibrary.findIndex( // find index of the book which matches firebaseKey to toggleReadStatus() that index
+			var bookIndex = myLibrary.findIndex(
+				// find index of the book which matches firebaseKey to toggleReadStatus() that index
 				(book) => book.firebaseKey === e.target.dataset.key
 			);
 			// let bookID = e.target.dataset.key;
@@ -218,4 +219,3 @@ getFromDB();
 render();
 console.log("after render");
 console.table(myLibrary);
-render();

@@ -2,6 +2,7 @@
  # Library App
 
 Library project done using Javascript, HTML and CSS, Materialize CSS and Firebase
+
 **Total project time:** 17h
 
 ## Live Demo

@@ -6,7 +6,7 @@ Library project done using Javascript, HTML and CSS, Materialize CSS and Firebas
 **Total project time:** 17h
 
 ## Live Demo
-Here is the live demo: https://kaneco.github.io/library/
+Here is the live demo: https://ze-gomes.github.io/library/
 ## Preview
 ![enter image description here](https://i.imgur.com/dWD3DIR.jpg)
 
